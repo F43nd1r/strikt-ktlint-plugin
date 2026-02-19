@@ -1,0 +1,21 @@
+name: tests
+
+on:
+  push:
+
+jobs:
+  tests:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Run tests
+        uses: burrunan/gradle-cache-action@v3
+        with:
+          arguments: test --no-daemon

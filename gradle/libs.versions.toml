@@ -1,0 +1,27 @@
+[versions]
+dokka = "2.1.0"
+jgitver = "0.10.0-rc03"
+junit-jupiter = "5.14.3"
+junit-platform-launcher = "1.14.3"
+kotlin = "2.2.21"
+ktlint = "1.8.0"
+nexusPublish = "2.0.0"
+org-jmailen-kotlinter = "5.3.0"
+slf4j = "2.0.17"
+strikt = "0.35.1"
+
+[libraries]
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher" }
+ktlint-core = { module = "com.pinterest.ktlint:ktlint-cli-ruleset-core", version.ref = "ktlint" }
+ktlint-rule-engine = { module = "com.pinterest.ktlint:ktlint-rule-engine", version.ref = "ktlint" }
+ktlint-test = { module = "com.pinterest.ktlint:ktlint-test", version.ref = "ktlint" }
+slf4j = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+strikt-core = { module = "io.strikt:strikt-core", version.ref = "strikt" }
+
+[plugins]
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+jgitver = { id = "fr.brouillard.oss.gradle.jgitver", version.ref = "jgitver" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "org-jmailen-kotlinter" }
+nexusPublish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexusPublish" }
