@@ -7,17 +7,17 @@ class NotContainsRuleTest {
     private val ruleAssert = assertThatRule { NotContainsRule() }
 
     @Test
-    fun `should replace not() contains with doesNotContain`() {
+    fun `should replace not() contains with doesNotContain for non-string argument`() {
         ruleAssert(
             """
             fun test() {
-                expectThat(result).not().contains("placeholder")
+                expectThat(result).not().contains(element)
             }
             """.trimIndent(),
         ).isFormattedAs(
             """
             fun test() {
-                expectThat(result).doesNotContain("placeholder")
+                expectThat(result).doesNotContain(element)
             }
             """.trimIndent(),
         )
@@ -35,20 +35,42 @@ class NotContainsRuleTest {
     }
 
     @Test
-    fun `should handle chained assertions`() {
+    fun `should handle chained assertions with non-string argument`() {
+        ruleAssert(
+            """
+            fun test() {
+                expectThat(result).isNotNull().not().contains(element)
+            }
+            """.trimIndent(),
+        ).isFormattedAs(
+            """
+            fun test() {
+                expectThat(result).isNotNull().doesNotContain(element)
+            }
+            """.trimIndent(),
+        )
+    }
+
+    @Test
+    fun `should not modify not() contains with string argument`() {
+        ruleAssert(
+            """
+            fun test() {
+                expectThat(result).not().contains("placeholder")
+            }
+            """.trimIndent(),
+        ).hasNoLintViolations()
+    }
+
+    @Test
+    fun `should not modify not() contains with chained string argument`() {
         ruleAssert(
             """
             fun test() {
                 expectThat(result).isNotNull().not().contains("x")
             }
             """.trimIndent(),
-        ).isFormattedAs(
-            """
-            fun test() {
-                expectThat(result).isNotNull().doesNotContain("x")
-            }
-            """.trimIndent(),
-        )
+        ).hasNoLintViolations()
     }
 
     @Test
@@ -58,7 +80,7 @@ class NotContainsRuleTest {
             import strikt.assertions.contains
 
             fun test() {
-                expectThat(result).not().contains("placeholder")
+                expectThat(result).not().contains(element)
             }
             """.trimIndent(),
         ).isFormattedAs(
@@ -67,7 +89,7 @@ class NotContainsRuleTest {
             import strikt.assertions.doesNotContain
 
             fun test() {
-                expectThat(result).doesNotContain("placeholder")
+                expectThat(result).doesNotContain(element)
             }
             """.trimIndent(),
         )
