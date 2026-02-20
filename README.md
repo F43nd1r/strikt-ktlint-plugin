@@ -26,7 +26,6 @@ All autocorrecting rules work with or without explicit type arguments (e.g. both
 | `has-size-zero` | `.hasSize(0)` | `.isEmpty()` |
 | `has-length-zero` | `.hasLength(0)` | `.isEmpty()` |
 | `not-is-equal-to` | `.not().isEqualTo(x)` | `.isNotEqualTo(x)` |
-| `not-contains` | `.not().contains(x)` | `.doesNotContain(x)` |
 | `not-negation` | `.not().isNull()` | `.isNotNull()` |
 |  | `.not().isEmpty()` | `.isNotEmpty()` |
 |  | `.not().isBlank()` | `.isNotBlank()` |

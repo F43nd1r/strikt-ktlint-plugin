@@ -14,7 +14,6 @@ import com.faendir.ktlint.strikt.rules.IsEqualToEmptyStringRule
 import com.faendir.ktlint.strikt.rules.IsEqualToNullRule
 import com.faendir.ktlint.strikt.rules.IsNotEqualToNullRule
 import com.faendir.ktlint.strikt.rules.IsNotNullAndRule
-import com.faendir.ktlint.strikt.rules.NotContainsRule
 import com.faendir.ktlint.strikt.rules.NotIsEqualToRule
 import com.faendir.ktlint.strikt.rules.NotNegationRule
 import com.faendir.ktlint.strikt.rules.TraversalAndToWithRule
@@ -37,7 +36,6 @@ class StriktRuleSetProvider : RuleSetProviderV3(RuleSetId(RULESET_ID)) {
         RuleProvider { HasSizeZeroRule() },
         RuleProvider { HasLengthZeroRule() },
         RuleProvider { NotIsEqualToRule() },
-        RuleProvider { NotContainsRule() },
         RuleProvider { NotNegationRule() },
         RuleProvider { ExpectThatBooleanMethodRule() },
         RuleProvider { IsNotNullAndRule() },
